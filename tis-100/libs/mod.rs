@@ -1,33 +1,17 @@
 
-struct Port {
-    index:usize,
-    data:Vec<isize>
+pub struct Port {
+    pub index:usize,
+    pub data:Vec<isize>
 }
 
-pub struct Input {
-    port: Port
+pub trait Input {
+    fn read(&self) -> isize;
 }
 
-pub struct Output {
-    port: Port
-}
-
-
-impl Input {
-    // constructor
-    pub fn new(data_:Vec<isize>) -> Input {
-        Input{ port: Port{index: 0, data: data_} }
-    }
-
-    pub fn read_next(&self) -> isize {
-        // pointer
-        let current:usize = self.port.index+1;
-
-        // next pointer position (how to change that unmutable!?)
-        self.port.index = self.port.index + 1;
-        // TODO deal with last data
-
-        self.port.data[current]
+impl Input for Port {
+    fn read(&self) -> isize {
+        let current = self.index;
+        self.data[current]
     }
 }
 
