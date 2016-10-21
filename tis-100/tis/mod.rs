@@ -1,18 +1,18 @@
 
 pub struct Port {
-    pub index:usize,
-    pub data:Vec<isize>
+	pub index:usize,
+	pub data:Vec<isize>
 }
 
 pub trait Input {
-    fn read(&self) -> isize;
+	fn read(&self) -> isize;
 }
 
 impl Input for Port {
-    fn read(&self) -> isize {
-        let current = self.index;
-        self.data[current]
-    }
+	fn read(&self) -> isize {
+		let current = self.index;
+		self.data[current]
+	}
 }
 
 // for an ouput, the data is what is supposed to be received.
